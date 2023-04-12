@@ -1,9 +1,9 @@
 import React, { useEffect,useState } from "react";
-import MovieRow from './Components/MovieRow';
+import MovieRow from './Components/movieRow/MovieRow';
 import Tmdb from './Tmdb';
 import './App.css';
-import FeaturedMovie from './Components/FeaturedMovie';
-import Header from './Components/Header';
+import FeaturedMovie from './Components/featureMovie/FeaturedMovie';
+import Header from './Components/header/Header';
 
 function App() {
 
@@ -64,7 +64,7 @@ function App() {
         Dados pegos do site Themoviedb.org
       </footer>
 
-      {movieList.length <= 0 && 
+      {setMovieList.length <= 0 && 
       <div className="loading">
         <img src="https://media.filmelier.com/noticias/br/2020/03/Netflix_LoadTime.gif" alt="carregando" />
       </div>
