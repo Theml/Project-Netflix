@@ -4,7 +4,7 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { useState } from 'react';
 
-export default ({title, items}) => {
+function MovieRow ({title, items}) {
     const[scrollX, setScrollX] = useState(-400)
 
     const handleLeftArrow = () => {
@@ -49,3 +49,5 @@ export default ({title, items}) => {
         </div>
     );
 }
+
+export default MovieRow

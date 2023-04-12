@@ -1,7 +1,7 @@
 import React from "react";
 import './FeaturedMovie.css';
 
-export default ({item}) => {
+function FeaturedMovie ({item}) {
     
     let firstDate = new Date(item.first_air_date);
     let genres = [];
@@ -34,3 +34,5 @@ export default ({item}) => {
         </section>
     )
 }
+
+export default FeaturedMovie

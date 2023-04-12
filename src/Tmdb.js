@@ -18,7 +18,7 @@ const basicFetch = async (endpoint) => {
     return json;
 }
 
-export default {
+const ProjectApi = {
     getHomeList: async () => {
         return [
             {
@@ -63,6 +63,7 @@ export default {
             },
         ];
     },
+
     getMovieInfo: async (movieId, type) =>{
         let info = {};
 
@@ -74,9 +75,13 @@ export default {
                 case 'tv':
                     info = await basicFetch(`/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`);
                 break;
+                default:
+                    throw new Error(`Tipo de conteúdo não suportado: ${type}`)
             }
         }
 
         return info;
-    } 
+    }, 
 };
+
+export default ProjectApi

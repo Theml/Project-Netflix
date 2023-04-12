@@ -5,7 +5,7 @@ import './App.css';
 import FeaturedMovie from './Components/FeaturedMovie';
 import Header from './Components/Header';
 
-export default () => {
+function App() {
 
   const [moveList, setMovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState (null);
@@ -17,10 +17,10 @@ export default () => {
       let list = await Tmdb.getHomeList();
       setMovieList(list);
 
-      let originals = list.filter(i=>i.slug === 'Originals');
-      let randomChosen = Math.floor(Math.random() * (originals[0]?.items.results.length - 1));
+      let originals = list.find(i=>i.slug === 'Originals');
+      let randomChosen = Math.floor(Math.random() * (originals[0].items.results.length - 1));
       let chosen = originals[0]?.items.results[randomChosen];
-      let chosenInfo = await Tmdb.getMovieInfo(chosen?.id, 'tv');
+      let chosenInfo = await Tmdb.getMovieInfo(chosen.id, 'tv');
       setFeaturedData(chosenInfo);
     }
 
@@ -64,7 +64,7 @@ export default () => {
         Dados pegos do site Themoviedb.org
       </footer>
 
-      {setMovieList.length <= 0 && 
+      {movieList.length <= 0 && 
       <div className="loading">
         <img src="https://media.filmelier.com/noticias/br/2020/03/Netflix_LoadTime.gif" alt="carregando" />
       </div>
@@ -72,3 +72,5 @@ export default () => {
     </div>
   );
 }
+
+export default App
